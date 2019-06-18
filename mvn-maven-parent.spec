@@ -4,7 +4,7 @@
 #
 Name     : mvn-maven-parent
 Version  : 4
-Release  : 3
+Release  : 4
 URL      : https://github.com/apache/maven-parent/archive/maven-parent-4.tar.gz
 Source0  : https://github.com/apache/maven-parent/archive/maven-parent-4.tar.gz
 Source1  : https://repo1.maven.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom
