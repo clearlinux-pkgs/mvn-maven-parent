@@ -4,7 +4,7 @@
 #
 Name     : mvn-maven-parent
 Version  : 4
-Release  : 9
+Release  : 10
 URL      : https://github.com/apache/maven-parent/archive/maven-parent-4.tar.gz
 Source0  : https://github.com/apache/maven-parent/archive/maven-parent-4.tar.gz
 Source1  : https://repo1.maven.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom
@@ -35,24 +35,27 @@ Source25  : https://repo1.maven.org/maven2/org/apache/maven/maven-parent/9/maven
 Source26  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/10/maven-shared-components-10.pom
 Source27  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/12/maven-shared-components-12.pom
 Source28  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom
-Source29  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom
-Source30  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
-Source31  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
-Source32  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom
-Source33  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/21/maven-shared-components-21.pom
-Source34  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/22/maven-shared-components-22.pom
-Source35  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/3/maven-shared-components-3.pom
-Source36  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/30/maven-shared-components-30.pom
-Source37  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/31/maven-shared-components-31.pom
-Source38  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/4/maven-shared-components-4.pom
-Source39  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/6/maven-shared-components-6.pom
-Source40  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/7/maven-shared-components-7.pom
-Source41  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/8/maven-shared-components-8.pom
-Source42  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/9/maven-shared-components-9.pom
+Source29  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/16/maven-shared-components-16.pom
+Source30  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom
+Source31  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
+Source32  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+Source33  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom
+Source34  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/21/maven-shared-components-21.pom
+Source35  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/22/maven-shared-components-22.pom
+Source36  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/3/maven-shared-components-3.pom
+Source37  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/30/maven-shared-components-30.pom
+Source38  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/31/maven-shared-components-31.pom
+Source39  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/4/maven-shared-components-4.pom
+Source40  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/6/maven-shared-components-6.pom
+Source41  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/7/maven-shared-components-7.pom
+Source42  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/8/maven-shared-components-8.pom
+Source43  : https://repo1.maven.org/maven2/org/apache/maven/shared/maven-shared-components/9/maven-shared-components-9.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-maven-parent-data = %{version}-%{release}
+BuildRequires : apache-maven
+BuildRequires : buildreq-mvn
 
 %description
 No detailed description available
@@ -66,6 +69,7 @@ data components for the mvn-maven-parent package.
 
 
 %prep
+%setup -q -n maven-parent-maven-parent-4
 
 %build
 
@@ -154,47 +158,50 @@ cp %{SOURCE27} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/share
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/15
 cp %{SOURCE28} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom
 
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/16
+cp %{SOURCE29} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/16/maven-shared-components-16.pom
+
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/17
-cp %{SOURCE29} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom
+cp %{SOURCE30} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/18
-cp %{SOURCE30} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
+cp %{SOURCE31} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/19
-cp %{SOURCE31} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+cp %{SOURCE32} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/20
-cp %{SOURCE32} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom
+cp %{SOURCE33} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/21
-cp %{SOURCE33} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/21/maven-shared-components-21.pom
+cp %{SOURCE34} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/21/maven-shared-components-21.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/22
-cp %{SOURCE34} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/22/maven-shared-components-22.pom
+cp %{SOURCE35} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/22/maven-shared-components-22.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/3
-cp %{SOURCE35} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/3/maven-shared-components-3.pom
+cp %{SOURCE36} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/3/maven-shared-components-3.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/30
-cp %{SOURCE36} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/30/maven-shared-components-30.pom
+cp %{SOURCE37} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/30/maven-shared-components-30.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/31
-cp %{SOURCE37} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/31/maven-shared-components-31.pom
+cp %{SOURCE38} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/31/maven-shared-components-31.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/4
-cp %{SOURCE38} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/4/maven-shared-components-4.pom
+cp %{SOURCE39} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/4/maven-shared-components-4.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/6
-cp %{SOURCE39} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/6/maven-shared-components-6.pom
+cp %{SOURCE40} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/6/maven-shared-components-6.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/7
-cp %{SOURCE40} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/7/maven-shared-components-7.pom
+cp %{SOURCE41} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/7/maven-shared-components-7.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/8
-cp %{SOURCE41} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/8/maven-shared-components-8.pom
+cp %{SOURCE42} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/8/maven-shared-components-8.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/9
-cp %{SOURCE42} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/9/maven-shared-components-9.pom
+cp %{SOURCE43} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/9/maven-shared-components-9.pom
 
 
 %files
@@ -230,6 +237,7 @@ cp %{SOURCE42} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/share
 /usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/10/maven-shared-components-10.pom
 /usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/12/maven-shared-components-12.pom
 /usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom
+/usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/16/maven-shared-components-16.pom
 /usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom
 /usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
 /usr/share/java/.m2/repository/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
